@@ -102,6 +102,7 @@ spec:
             - name: haproxy-config
               mountPath: /usr/local/etc/haproxy
 {{ toYaml .Values.podVolumeMounts | indent 12 }}
+{{ toYaml .Values.podExtras | indent 10 }}
       {{- with.Values.initContainers }}
       initContainers:
         {{- toYaml . | nindent 8 }}
