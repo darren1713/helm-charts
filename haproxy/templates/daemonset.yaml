@@ -69,7 +69,6 @@ spec:
         - name: haproxy-config
           configMap:
             name: {{ include "haproxy.fullname" . }}
-{{ toYaml .Values.podVolumes | indent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           {{- if .Values.securityContext.enabled }}
@@ -101,7 +100,6 @@ spec:
           volumeMounts:
             - name: haproxy-config
               mountPath: /usr/local/etc/haproxy
-{{ toYaml .Values.podVolumeMounts | indent 12 }}
 {{ toYaml .Values.podExtras | indent 10 }}
       {{- with.Values.initContainers }}
       initContainers:
